@@ -19,15 +19,15 @@
 <a href="#">
 <div class="logo2">
 <i class="bi bi-calculator"></i>
-<h1 style="color: #fff;">Calculator</h1>
+<h1 style="color: #f7bf07;">Calculator</h1>
 </div>
 </a>
 <nav>
 <ul>
 <li><a href="#">Home</a></li>
-<li><a href="#">Matrices Mode</a></li>
-<li><a href="#">Scientific Mode</a></li>
-<!-- <li><a href="#">History</a></li> -->
+<li><a href="https://matrixcalc.org/">Matrices Mode</a></li>
+<li><a href="https://www.google.com/search?q=scientific+calculator&oq=sc&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyDQgCEAAYgwEYsQMYgAQyDQgDEAAYgwEYsQMYgAQyEwgEEC4YgwEYxwEYsQMY0QMYgAQyDQgFEAAYgwEYsQMYgAQyBggGEEUYPDIGCAcQRRg80gEIMTczN2owajeoAgCwAgA&sourceid=chrome&ie=UTF-8">Scientific Mode</a></li>
+
 </ul>
 </nav>
 </div>
@@ -35,32 +35,33 @@
 <section>
 <div class="calculator">
 <form action="" name="calci">
-<h2 style="text-align: center;">Calculate</h2>
-<input class="outer" type="text" name="display" placeholder="Enter the Number"><br>
-<input class="btn" type="button" value="7" onclick="calci.display.value+='1'">
-<input class="btn" type="button" value="8" onclick="calci.display.value+='2'">
-<input class="btn" type="button" value="9" onclick="calci.display.value+='3'">
-<input class="btn" type="button" value="+" onclick="calci.display.value+='+'"><br>
-<input class="btn" type="button" value="4" onclick="calci.display.value+='4'">
-<input class="btn" type="button" value="5" onclick="calci.display.value+='5'">
-<input class="btn" type="button" value="6" onclick="calci.display.value+='6'">
-<input class="btn" type="button" value="-" onclick="calci.display.value+='-'"><br>
-<input class="btn" type="button" value="1" onclick="calci.display.value+='7'">
-<input class="btn" type="button" value="2" onclick="calci.display.value+='8'">
-<input class="btn" type="button" value="3" onclick="calci.display.value+='9'">
-<input class="btn" type="button" value="*" onclick="calci.display.value+='*'"><br>
-<input class="btn" type="button" value="AC"onclick="calci.display.value =''">
-<input class="btn" type="button" value="0" onclick="calci.display.value+='0'">
-<input class="btn" type="button" value="=" onclick="calci.display.value=eval(calci.display.value)">
-<input class="btn" type="button" value="/" onclick="calci.display.value+='/'">
+<h2 style="text-align: center;color:#f1d577">CALCULATE</h2>
+<input id="display" type="text" name="display" placeholder="Enter the Number" disabled><br>
+<input class="digit" type="button" value="7">
+<input class="digit" type="button" value="8">
+<input class="digit" type="button" value="9">
+<input class="operator" type="button" value="+"><br>
+<input class="digit" type="button" value="4">
+<input class="digit" type="button" value="5">
+<input class="digit" type="button" value="6">
+<input class="operator" type="button" value="-"><br>
+<input class="digit" type="button" value="1" >
+<input class="digit" type="button" value="2">
+<input class="digit" type="button" value="3">
+<input class="operator" type="button" value="*"><br>
+<input id="clear" type="button" value="AC">
+<input class="digit" type="button" value="0" >
+<input id="evaluate" type="button" value="=">
+<input class="operator" type="button" value="/">
 </form>
 </div>
-</section>https://github.com/agira-Vimal/CalculatorProject.git 
+</section>
 <footer>
 <div class="foot-items">
 <p>&copy; Copyright 2023 Calculator Application.@iamvimalrajasekar.in</p>
 </div>
 </footer>
+<script src="script.js"></script>
 </body>
 </html>
 
