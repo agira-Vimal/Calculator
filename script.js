@@ -20,6 +20,6 @@ document.getElementById("evaluate").addEventListener("click",()=>{
         document.getElementById("display").value=result
     }
     catch(error){
-        document.getElementById("display").value="Syntax Error"
+        document.getElementById("display").value="Error"
     }
 })
