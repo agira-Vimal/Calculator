@@ -1,3 +1,7 @@
+window.onload=()=>
+{ 
+    document.getElementById("display").focus()
+}
 document.querySelectorAll(".digit").forEach(button => {
     button.addEventListener('click',() =>
         appendToDisplay(button.value)
