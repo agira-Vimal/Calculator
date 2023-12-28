@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: url("bgpic.jpg");
+    background-color:rgb(46, 54, 51);
     background-size: 100%; /* Adjust the percentage as needed */
     background-repeat: no-repeat;
     background-attachment: fixed; /* Optional: Fixed background */
@@ -31,9 +31,7 @@ body{
     font-weight: bold;
     letter-spacing: 2px;
     }
-    /* .logo2 h1{
-        padding-left: 50px;
-    } */
+    
     h1{
     margin-left: 5px;
     font-size: 30px ;
@@ -42,11 +40,11 @@ body{
     nav li{
     display: inline;
     margin-right: 15px;
-    color:#f7bf07;
+    color:#D2DE32;
     }
     a{
     text-decoration: none;
-    color: #f7bf07  ;
+    color: #D2DE32  ;
     }
     section{
     flex:1;
@@ -75,7 +73,8 @@ body{
     text-align: center;
     border-radius: 5px;
     margin: 5px;
-    background-color: rgb(201, 236, 45); 
+    background-color: #F7E987; 
+    border: none;
     }
     
     input:hover{
@@ -101,6 +100,11 @@ body{
         border-radius: 5px;
         text-align: left;
         padding-left: 8px;
-        /* box-sizing: border-box; */
-        
+        /* box-sizing: border-box; */ 
     }
+#clear{
+    background-color: #EF4040;
+}
+#evaluate{
+    background-color: orangered;
+}
