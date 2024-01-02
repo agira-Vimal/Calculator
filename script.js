@@ -3,7 +3,7 @@ window.onload=()=>
     document.getElementById("display").focus()
     
 }
-let counter=0
+// let counter=0  For Session Storage
 document.querySelectorAll(".digit").forEach(button => {
     button.addEventListener('click',() =>
         appendToDisplay(button.value)
@@ -124,7 +124,8 @@ function convertInfixToPostFix(infixExpression){        //6-5*2/10
       }
     }
 
-    sessionStorage.setItem(counter,document.getElementById('display').value +" : " + stackForAccumulatingOperationsResults[0])
-    counter++
+    // sessionStorage.setItem(counter,document.getElementById('display').value +" : " + stackForAccumulatingOperationsResults[0])
+    // counter++
+    localStorage.setItem(`${document.getElementById('display').value }`, + stackForAccumulatingOperationsResults[0])
     return stackForAccumulatingOperationsResults.pop().toString()
   }
