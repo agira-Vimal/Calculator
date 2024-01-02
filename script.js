@@ -1,8 +1,9 @@
 window.onload=()=>
 { 
     document.getElementById("display").focus()
+    
 }
-
+let counter=0
 document.querySelectorAll(".digit").forEach(button => {
     button.addEventListener('click',() =>
         appendToDisplay(button.value)
@@ -35,6 +36,7 @@ document.getElementById("evaluate").addEventListener("click",()=>{
 ************************Without Eval ()*****************************/
 
 document.getElementById("evaluate").addEventListener("click",()=>{
+  console.log(document.getElementById("display").value)
     let postFixOfExpression=convertInfixToPostFix(document.getElementById("display").value)
     const result = evaluatePostfix(postFixOfExpression)
     document.getElementById('display').value = result
@@ -48,33 +50,34 @@ function convertInfixToPostFix(infixExpression){        //6-5*2/10
     }
     let i = 0
     while (i < infixExpression.length) {                 //0<7
-      let token = infixExpression[i];    
-      if (i>0  && infixExpression[i]==='-' || !isNaN(token)) {                                //true
-        let currentNumber = '';
+      let token = infixExpression[i]   
+      if (i==0 || i < infixExpression.length && infixExpression[i]==='.' 
+      || (!isNaN(infixExpression[i]) || ((i>0 && '+-'.includes(infixExpression[i]) && '+-*/'.includes(infixExpression[i-1])))))  {                                //true
+        let currentNumber = ''
         //adding only numbers/minus before an operator found to postfix
-        while(i < infixExpression.length && infixExpression[i]==='.' || (!isNaN(infixExpression[i]) || ((i>0 && '+-'.includes(infixExpression[i]) && '+-*/'.includes(infixExpression[i-1]))))) {                                      
+        while(i==0 || i < infixExpression.length && infixExpression[i]==='.' || (!isNaN(infixExpression[i]) || ((i>0 && '+-'.includes(infixExpression[i]) && '+-*/'.includes(infixExpression[i-1]))))) {                                      
           currentNumber += infixExpression[i]                 //65+9-2
           console.log(infixExpression[i])                         //6
-          i++;
+          i++
         }
-        i--; 
+        i--
         
         postFixExpression.push(currentNumber);
       }
       else if (token === '*' && infixExpression[i + 1] === '*') {               // Exponentiation operator '**' detected
                                                                               // Ensure there is a value before the '**'
         if (postFixExpression.length === 0 || isNaN(postFixExpression[postFixExpression.length - 1])) {
-          console.error('Invalid expression: Missing value before **');
-          return 'Invalid Expression';
+          console.error('Invalid expression: Missing value before **')
+          return 'Invalid Expression'
         }
   
         while (
           stackForOperators.length &&
           precedenceForOperators[stackForOperators[stackForOperators.length - 1]] > precedenceForOperators['**']
         ) {
-          postFixExpression.push(stackForOperators.pop());
+          postFixExpression.push(stackForOperators.pop())
         }
-        stackForOperators.push('**');
+        stackForOperators.push('**')
         i++; 
       } 
       
@@ -83,24 +86,25 @@ function convertInfixToPostFix(infixExpression){        //6-5*2/10
           stackForOperators.length &&
           precedenceForOperators[stackForOperators[stackForOperators.length - 1]] >= precedenceForOperators[token]
         ) {
-          postFixExpression.push(stackForOperators.pop());
+          postFixExpression.push(stackForOperators.pop())
         }
-        stackForOperators.push(token);
+        stackForOperators.push(token)
         
       }
   
       i++;
-      console.log(postFixExpression)
+      console.log(`stackForOperators : ${stackForOperators}`)
+      console.log(`postFixExpression : ${postFixExpression}`)
     }
   
     while (stackForOperators.length) {
-        postFixExpression.push(stackForOperators.pop());
+        postFixExpression.push(stackForOperators.pop())
     }
-    return postFixExpression.join(' ');
+    return postFixExpression.join(' ')
   }
 
   function evaluatePostfix(postfixExpression) {
-    const stackForAccumulatingOperationsResults = [];
+    const stackForAccumulatingOperationsResults = []
     const operators = {
       '+': (a, b) => a + b,
       '-': (a, b) => a - b,
@@ -109,16 +113,18 @@ function convertInfixToPostFix(infixExpression){        //6-5*2/10
       '**': (a, b) => Math.pow(a, b),
     };
   
-    const finalPostfixExpression = postfixExpression.split(' ');
+    const finalPostfixExpression = postfixExpression.split(' ')
   
     for (let currentValue of finalPostfixExpression) {
       if (!isNaN(currentValue)) {
-        stackForAccumulatingOperationsResults.push(parseFloat(currentValue));
+        stackForAccumulatingOperationsResults.push(parseFloat(currentValue))
       } else if (operators[currentValue]) {
-        const operands = [stackForAccumulatingOperationsResults.pop(), stackForAccumulatingOperationsResults.pop()];
-        stackForAccumulatingOperationsResults.push(operators[currentValue](operands[1], operands[0]));
+        const operands = [stackForAccumulatingOperationsResults.pop(), stackForAccumulatingOperationsResults.pop()]
+        stackForAccumulatingOperationsResults.push(operators[currentValue](operands[1], operands[0]))
       }
     }
-  
-    return stackForAccumulatingOperationsResults.pop().toString();
+
+    sessionStorage.setItem(counter,document.getElementById('display').value +" : " + stackForAccumulatingOperationsResults[0])
+    counter++
+    return stackForAccumulatingOperationsResults.pop().toString()
   }
